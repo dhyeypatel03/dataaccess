@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Prices</title>
+</head>
+<body>
+    <h1>Product Prices</h1>
+    <div id="amazonPrice"></div>
+    <div id="flipkartPrice"></div>
+    <div id="officialWebsitePrice"></div>
+
+    <script>
+        fetch('/data.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('amazonPrice').innerText = `Amazon Price: ₹${data.amazonPrice}`;
+                document.getElementById('flipkartPrice').innerText = `Flipkart Price: ${data.flipkartPrice}`;
+                document.getElementById('officialWebsitePrice').innerText = `Apple Official Website Price: ₹${data.officialWebsitePrice}`;
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
